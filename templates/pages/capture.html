@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_title %}
+{% endblock head_title %}
+
+{% block content %}
+ 
+
+
+<h1>RESULT :</h1> 
+{% if text %}
+<p> The extracted text from the image above is:
+ {% for i in text %}
+<b> {{ i }} </b>
+  {% endfor %}
+</p> 
+{% else %}
+The extracted text will be displayed here
+{% endif %}
+
+
+
+ 
+{% endblock content %}
+

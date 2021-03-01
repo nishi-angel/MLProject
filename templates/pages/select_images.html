@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_title %}
+{% endblock head_title %}
+
+{% block content %}
+ 
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" name="myfile">
+  <button type="submit">Upload</button>
+</form>
+<br>
+<br>
+<hr>
+{% if uploaded_file_url %}
+  <img src="{{ uploaded_file_url }}" style="height:350px;width:600px;">
+  <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+{% endif %}
+<hr>
+<h1>RESULT :</h1> 
+{% if text %}
+<p> The extracted text from the image above is:
+ {% for i in text %}
+<b> {{ i }} </b>
+  {% endfor %}
+</p> 
+{% else %}
+The extracted text will be displayed here
+{% endif %}
+
+<hr>
+<br>
+<h1>Extracted Text List :</h1>
+{% if file_content %}
+    <p> The extracted text from the image above is:<br><br>
+    {% for i in file_content %}
+    <b> {{ i }} </b> 
+      {% endfor %}
+    </p>
+{% else %}
+    The extracted text list will be displayed here
+{% endif %}
+
+
+ 
+{% endblock content %}
+
